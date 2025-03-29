@@ -11,14 +11,26 @@ def fetch_nasa_apod(token):
     response = requests.get(url, params=params)
     response.raise_for_status()
     return response.json()
+    
+def downaload_images(response_apod)
+    apod_photos = []
+    for url_on_photo in response_apod.json():
+        adop_images = url_on_photo['url']
+        if os.path.splitext(adop_images)[1] in ['.jpg', '.png']:
+            apod_photos.append(adop_images)
+    
+    for image_number, image_link in enumerate(apod_photos):
+        file_name = 'nasa_apod'
+        save_photo_in_folder(file_name, image_link, image_number)
 
-
+            
 if __name__ == '__main__':
     Path('images').mkdir(exist_ok=True)
     load_dotenv()
-    token = os.environ['NASA_TOKEN']
-
-    apods = fetch_nasa_apod(token)
-    for apod_number, apod in enumerate(apods, start=1):
-        if fetch_file_extension(apod['url']):
-            download_image(apod['url'], f'images/nasa_apod{apod_number}')
+    try:
+        token = os.environ['NASA_TOKEN']
+        response_apod = fetch_nasa_adop(token)
+        download_images(response_apod)
+    
+    except requests.exceptions.HTTPError as error:
+        print(error)
