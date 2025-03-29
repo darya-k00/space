@@ -14,7 +14,8 @@ def publish_all_photos(directory, frequency, chat_id):
         for image in images:
             with open(f'{directory}/{image}', 'rb') as file:
                 bot.send_document(chat_id=chat_id, document=file)
-            sleep(frequency * 60 * 60 * 60 * 60)
+            frequency = 4
+            sleep(frequency * 3600)
 
 
 def publish_one_photo(directory, photo, chat_id):
