@@ -25,7 +25,7 @@ if __name__ == '__main__':
     load_dotenv()
     tg_token = os.environ['TG_TOKEN']
     bot = telegram.Bot(token=tg_token)
-    chat_id = os.environ['CHAT_ID']
+    chat_id = os.environ['TG_CHAT_ID']
     parser = argparse.ArgumentParser(
         description='This program allows to start publishing '
                     'photos on telegram channel.')
