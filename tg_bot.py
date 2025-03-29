@@ -10,17 +10,14 @@ def publish_all_photos(directory, frequency, chat_id):
     while True:
         images = os.listdir(directory)
         random.shuffle(images)
+        
 
-        for image in images:
+def publish_one_photo(directory, photo, chat_id):
+    for image in images:
             with open(f'{directory}/{image}', 'rb') as file:
                 bot.send_document(chat_id=chat_id, document=file)
             frequency = 4
             sleep(frequency * 3600)
-
-
-def publish_one_photo(directory, photo, chat_id):
-    with open(f'{directory}/{photo}', 'rb') as file:
-        bot.send_document(chat_id=chat_id, document=file)
 
 if __name__ == '__main__':
     load_dotenv()
