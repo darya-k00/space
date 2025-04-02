@@ -27,10 +27,7 @@ def downaload_images(response_apod)
 if __name__ == '__main__':
     Path('images').mkdir(exist_ok=True)
     load_dotenv()
-    try:
-        token = os.environ['NASA_TOKEN']
-        response_apod = fetch_nasa_adop(token)
-        download_images(response_apod)
+    token = os.environ['NASA_TOKEN']
+    response_apod = fetch_nasa_adop(token)
+    download_images(response_apod)
     
-    except requests.exceptions.HTTPError as error:
-        print(error)
