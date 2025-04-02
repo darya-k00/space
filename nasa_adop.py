@@ -2,7 +2,7 @@ import requests
 import os
 from pathlib import Path
 from dotenv import load_dotenv
-from create_path_for images import save_photo_in_folder
+from download_image import save_photo_in_folder
 from download_image import download_image, fetch_file_extension
 
 
