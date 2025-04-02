@@ -1,6 +1,9 @@
 from os.path import splitext
 from urllib.parse import urlsplit
 import requests
+import os
+import traceback
+
 
 if not os.path.exists('images'):
     os.makedirs('images')
