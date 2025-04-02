@@ -6,18 +6,16 @@ import os
 import telegram
 
 
-def publish_all_photos(directory, frequency, chat_id):
-    while True:
-        images = os.listdir(directory)
-        random.shuffle(images)
-        
-
-def publish_one_photo(directory, photo, chat_id):
-    for image in images:
+def publish_all_photos(stop, chat_id):
+     while True:
+         images = os.listdir(directory)
+         random.shuffle(images)
+         
+         for image in images:
             with open(f'{directory}/{image}', 'rb') as file:
                 bot.send_document(chat_id=chat_id, document=file)
-            frequency = 4
-            sleep(frequency * 3600)
+            time.sleep(stop)   
+    
 
 if __name__ == '__main__':
     load_dotenv()
@@ -32,16 +30,12 @@ if __name__ == '__main__':
                         help='enter the name of the photo to publish',
                         type=str,
                         default=f'{random.choice(os.listdir("images"))}')
-    parser.add_argument('-f', '--frequency',
+    parser.add_argument('-t', '--time',
                         help='type how often you want to publish in hours',
-                        type=int, default=4)
-    parser.add_argument('-a', '--all',
-                        help='use if you want all images to be posted',
-                        action='store_true')
+                        type=int, default=14400)
     args = parser.parse_args()
     chat_id = args.chat_id
+    stop = args.time
+    publish_all_photos('images',args.time, args.chat_id)
 
-    if args.all:
-        publish_all_photos('images', args.frequency, args.chat_id)
-    else:
         publish_one_photo('images', args.photo, args.chat_id)
