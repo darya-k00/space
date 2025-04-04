@@ -13,7 +13,7 @@ def fetch_nasa_apod(token):
     response.raise_for_status()
     return response.json()
     
-def downaload_images(response_apod)
+def downaload_images(response_apod):
     apod_photos = []
     for url_on_photo in response_apod.json():
         adop_images = url_on_photo['url']
