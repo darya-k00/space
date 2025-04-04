@@ -2,7 +2,6 @@ import requests
 import os
 from pathlib import Path
 from dotenv import load_dotenv
-from download_image import save_photo_in_folder
 from download_image import download_image, fetch_file_extension
 
 
@@ -20,9 +19,8 @@ def downaload_images(response_apod):
         if os.path.splitext(adop_images)[1] in ['.jpg', '.png']:
             apod_photos.append(adop_images)
     
-    for image_number, image_link in enumerate(apod_photos):
-        file_name = 'nasa_apod'
-        save_photo_in_folder(file_name, image_link, image_number)
+    for image_number, image in enumerate(images, start=1):
+        download_image(image, f'images/nasa_adop{image_number}.jdg')
 
             
 if __name__ == '__main__':
