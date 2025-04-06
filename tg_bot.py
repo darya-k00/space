@@ -6,7 +6,7 @@ import os
 import telegram
 
 
-def publish_all_photos(directory, chat_id):
+def publish_all_photos(directory, chat_id, time_message):
      time_messages = 14400
      while True:
          images = os.listdir(directory)
