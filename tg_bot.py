@@ -35,6 +35,4 @@ if __name__ == '__main__':
                         help='type how often you want to publish in hours',
                         type=int, default=14400)
     args = parser.parse_args()
-    chat_id = args.chat_id
-    stop = args.time
     publish_all_photos('images',args.time, args.chat_id)
