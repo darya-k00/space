@@ -7,6 +7,7 @@ import telegram
 
 
 def publish_all_photos(directory, chat_id):
+     time_messages = 14400
      while True:
          images = os.listdir(directory)
          random.shuffle(images)
@@ -14,7 +15,7 @@ def publish_all_photos(directory, chat_id):
          for image in images:
             with open(f'{directory}/{image}', 'rb') as file:
                 bot.send_document(chat_id=chat_id, document=file)
-            time.sleep(14400)   
+            time.sleep(time_messages)   
     
 
 if __name__ == '__main__':
