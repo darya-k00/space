@@ -4,9 +4,6 @@ import requests
 import os
 import traceback
 
-
-if not os.path.exists('images'):
-    os.makedirs('images')
         
 def download_image(url, directory, params=None):
     response = requests.get(url, params=params)
